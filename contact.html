@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Контакти та форми</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title">Контакти</h1>
+    <nav class="site-nav" aria-label="Головна навігація">
+      <ul>
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="gallery.html">Галерея/Досягнення</a></li>
+        <li><a href="contact.html" aria-current="page">Контакти</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container forms-layout">
+  <!-- Липкий хелп (sticky) -->
+  <aside class="help sticky">
+    <h3>Підказка</h3>
+    <p>Поля з * — обов’язкові. Натисніть <a href="#login-modal">сюди</a>, щоб відкрити модальне вікно логіну.</p>
+  </aside>
+
+  <section class="forms-column">
+    <!-- 1) Вхід -->
+    <form class="card form login-form" id="login">
+      <fieldset>
+        <legend>Вхід до системи</legend>
+
+        <label for="login-email">Email*:</label>
+        <input type="email" id="login-email" name="email" required>
+
+        <label for="login-password">Пароль*:</label>
+        <input type="password" id="login-password" name="password" required minlength="8">
+
+        <button type="submit" class="btn btn-primary">Увійти</button>
+        <a class="btn btn-link" href="#login-modal">Увійти у модалі</a>
+      </fieldset>
+    </form>
+
+    <!-- 2) Реєстрація -->
+    <form class="card form register-form clearfix" id="register">
+      <fieldset>
+        <legend>Реєстрація</legend>
+
+        <!-- float для пари полів у рядок -->
+        <div class="float-half">
+          <label for="first-name">Ім’я*:</label>
+          <input type="text" id="first-name" name="first_name" required minlength="2">
+        </div>
+        <div class="float-half">
+          <label for="last-name">Прізвище*:</label>
+          <input type="text" id="last-name" name="last_name" required minlength="2">
+        </div>
+
+        <label for="reg-email">Email*:</label>
+        <input type="email" id="reg-email" name="email" required>
+
+        <div class="float-half">
+          <label for="reg-pass">Пароль*:</label>
+          <input type="password" id="reg-pass" name="password" required minlength="8">
+        </div>
+        <div class="float-half">
+          <label for="reg-pass2">Підтвердження пароля*:</label>
+          <input type="password" id="reg-pass2" name="password_confirm" required minlength="8">
+        </div>
+
+        <label for="dob">Дата народження:</label>
+        <input type="date" id="dob" name="dob" min="1900-01-01">
+
+        <fieldset class="inline-fieldset">
+          <legend>Стать:</legend>
+          <label><input type="radio" name="gender" value="male"> Чоловіча</label>
+          <label><input type="radio" name="gender" value="female"> Жіноча</label>
+          <label><input type="radio" name="gender" value="other"> Інша</label>
+        </fieldset>
+
+        <label for="country">Країна:</label>
+        <select id="country" name="country">
+          <option value="">— Оберіть країну —</option>
+          <option value="ua">Україна</option>
+          <option value="us">США</option>
+          <option value="uk">Велика Британія</option>
+        </select>
+
+        <label class="checkbox">
+          <input type="checkbox" name="terms" required>
+          Погоджуюся з умовами
+        </label>
+
+        <button type="submit" class="btn btn-primary">Зареєструватися</button>
+      </fieldset>
+    </form>
+  </section>
+
+  <section class="forms-column">
+    <!-- 3) Зворотний зв’язок -->
+    <form class="card form feedback-form">
+      <fieldset>
+        <legend>Зворотний зв’язок</legend>
+
+        <label for="fb-name">Ім’я:</label>
+        <input type="text" id="fb-name" name="name">
+
+        <label for="fb-email">Email*:</label>
+        <input type="email" id="fb-email" name="email" required>
+
+        <label for="topic">Тема:</label>
+        <select id="topic" name="topic">
+          <option value="question">Питання</option>
+          <option value="proposal">Пропозиція</option>
+          <option value="other">Інше</option>
+        </select>
+
+        <label for="message">Повідомлення*:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <fieldset class="inline-fieldset">
+          <legend>Рейтинг:</legend>
+          <label><input type="radio" name="rate" value="1"> 1</label>
+          <label><input type="radio" name="rate" value="2"> 2</label>
+          <label><input type="radio" name="rate" value="3"> 3</label>
+          <label><input type="radio" name="rate" value="4"> 4</label>
+          <label><input type="radio" name="rate" value="5"> 5</label>
+        </fieldset>
+
+        <div class="range-row">
+          <label for="range">Або повзунок:</label>
+          <input type="range" id="range" name="range" min="1" max="5" value="3">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Надіслати</button>
+      </fieldset>
+    </form>
+  </section>
+</main>
+
+<!-- Модальне вікно (position: fixed) через :target -->
+<div id="login-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+  <div class="modal__dialog">
+    <h2 id="login-modal-title">Швидкий вхід</h2>
+    <form class="form">
+      <label for="m-email">Email*:</label>
+      <input type="email" id="m-email" required>
+      <label for="m-pass">Пароль*:</label>
+      <input type="password" id="m-pass" required minlength="8">
+      <button type="submit" class="btn btn-primary">Увійти</button>
+      <a href="#" class="btn btn-link modal__close" aria-label="Закрити">Закрити</a>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Ім’я Прізвище</p>
+  </div>
+</footer>
+</body>
+</html>
